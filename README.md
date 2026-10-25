@@ -5,7 +5,8 @@
 **Materia:** Paradigma Orientado a Objetos  
 **Curso y turno:** Miércoles - Tarde  
 **Docente:** Leon Maria Angela  
-**Fecha de entrega:** 25/10/2026  
+**Fecha de entrega - Etapa 1:** 25/10/2026  
+**Fecha de entrega - Etapa 2:** 04/11/2026
 
 ## Propuesta B
 
