@@ -26,6 +26,14 @@ public class Dueño extends Persona {
         return correo;
     }
 
+    public String getDocumento() {
+        return super.getDocumento();
+    }
+
+    public List<Mascota> getMascotas() {
+        return mascotas;
+    }
+    
     public void agregarMacota(Mascota mascota) {
         mascotas.add(mascota);
     }
