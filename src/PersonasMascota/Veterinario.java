@@ -44,4 +44,8 @@ public class Veterinario extends Persona {
     public boolean esDeGuardia() {
         return esDeGuardia;
     }
+
+    public String getLegajo() {
+        return Legajo;
+    }
 }
