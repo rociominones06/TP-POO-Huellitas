@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-// Representa un producto, insumo o medicamento en stock. Y administra sus lotes.
+// Representa un producto, insumo o medicamento en stock, y administra sus lotes.
 
 public class Producto {
     private int idProducto;

@@ -1,6 +1,6 @@
 package InventarioProveedores;
 
-// Representa a un proveedor de medicamentos e insumos
+// Representa a un proveedor de medicamentos e insumos.
 
 public class Proveedor {
     private String cuit;

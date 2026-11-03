@@ -43,7 +43,7 @@ public class ControladorInventario {
         proveedor.suministrarLote(producto, lote);
     }
 
-    // Obtener productos que esten con stock minimo (reposicion)
+    // Obtener productos que esten con stock minimo, (reposicion)
     public List<Producto> obtenerProductosBajoStock(List<Producto> catalogoProductos, LocalDate hoy) {
         List<Producto> bajoStock = new ArrayList<>();
         if (catalogoProductos == null) return bajoStock;

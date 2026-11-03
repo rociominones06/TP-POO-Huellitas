@@ -1,7 +1,7 @@
 package InventarioProveedores;
 import java.time.LocalDate;
 
-//  Representa un lote fisico de insumos
+//  Representa un lote fisico de insumos.
 
 public class Lote {
     private String numeroLote;
