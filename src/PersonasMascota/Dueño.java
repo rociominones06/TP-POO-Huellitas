@@ -21,6 +21,10 @@ public class Dueño extends Persona {
         this.mascotas = new ArrayList<Mascota>();
         this.cantidadAusenciasSeguidas = 0;
     }
+    
+    public String getCorreo() {
+        return correo;
+    }
 
     public void agregarMacota(Mascota mascota) {
         mascotas.add(mascota);
