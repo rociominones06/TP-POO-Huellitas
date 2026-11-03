@@ -1,11 +1,4 @@
 package InventarioProveedores;
-import Excepciones.ReglaNegocioException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
-// Representa un producto, insumo o medicamento en stock. Y administra sus lotes.
 
 import java.io.Serializable;
 import java.time.LocalDate;
