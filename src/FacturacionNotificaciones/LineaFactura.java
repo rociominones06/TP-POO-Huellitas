@@ -8,12 +8,12 @@ public class LineaFactura {
     private final int cantidad;
     private final double precioUnitario;
 
-    /** Línea de un insumo/medicamento: toma nombre y precio base del producto. */
+    // Línea de un insumo/medicamento: toma nombre y precio base del producto.
     public LineaFactura(Producto producto, int cantidad) {
         if (producto == null) {
             throw new IllegalArgumentException("El producto es obligatorio.");
         }
-        double precioBase = producto.getPrecioVenta();
+        double precioBase = producto.getPrecioBase();
         validar(cantidad, precioBase);
         this.descripcion = producto.getNombre();
         this.producto = producto;
@@ -21,7 +21,7 @@ public class LineaFactura {
         this.precioUnitario = precioBase;
     }
 
-    /** Línea de concepto sin producto (por ejemplo, el valor de la consulta). */
+    // Línea de concepto sin producto (por ejemplo, el valor de la consulta).
     public LineaFactura(String descripcion, int cantidad, double precioUnitario) {
         if (descripcion == null || descripcion.isBlank()) {
             throw new IllegalArgumentException("La descripción es obligatoria.");
