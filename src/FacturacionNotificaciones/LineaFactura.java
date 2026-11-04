@@ -13,12 +13,12 @@ public class LineaFactura {
         if (producto == null) {
             throw new IllegalArgumentException("El producto es obligatorio.");
         }
-        double precioBase = producto.getPrecioBase();
-        validar(cantidad, precioBase);
+        double precioUnitario = producto.getPrecioUnitario();
+        validar(cantidad, precioUnitario);
         this.descripcion = producto.getNombre();
         this.producto = producto;
         this.cantidad = cantidad;
-        this.precioUnitario = precioBase;
+        this.precioUnitario = precioUnitario;
     }
 
     // Línea de concepto sin producto (por ejemplo, el valor de la consulta).
