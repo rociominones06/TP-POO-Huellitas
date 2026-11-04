@@ -19,4 +19,9 @@ public class RangoHorario {
     public LocalTime getHoraFin() {
         return horaFin;
     }
+
+    public boolean contieneHorario(LocalTime inicio, LocalTime fin) {
+        return !inicio.isBefore(horaInicio)
+                && !fin.isAfter(horaFin);
+    }
 }
