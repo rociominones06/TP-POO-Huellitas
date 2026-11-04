@@ -36,7 +36,7 @@ public class ClinicaVeterinaria implements Serializable {
     private final String nombre;
     private final Map<String, Dueño> dueños = new LinkedHashMap<>();            // clave: documento
     private final Map<String, Veterinario> veterinarios = new LinkedHashMap<>(); // clave: legajo
-    private final ControladorInventario inventario = new ControladorInventario();
+    private final ControladorInventario inventario;
     private final ControladorFacturacion facturacion;
     private final PlanificadorTurnos planificador = new PlanificadorTurnos();
     private final ServicioNotificaciones notificaciones;
@@ -56,6 +56,7 @@ public class ClinicaVeterinaria implements Serializable {
         this.nombre = nombre.trim();
         this.notificaciones = notificaciones;
         this.facturacion = new ControladorFacturacion(new CalculadorFacturacion(), notificaciones);
+        this.inventario = new ControladorInventario(this);
     }
 
     // Dueños y mascotas (CU01, CU02, CU17, CU26)
@@ -86,7 +87,7 @@ public class ClinicaVeterinaria implements Serializable {
     // La mascota solo se registra si su dueño ya esta registrado (flujo alternativo de CU02).
     public void registrarMascota(Dueño dueño, Mascota mascota) throws RegistroNoEncontradoException {
         buscarDueño(dueño.getDocumento());
-        dueño.agregarMacota(mascota);
+        dueño.agregarMascota(mascota);
     }
 
     // CU17: la historia clinica viaja con la mascota porque es parte de ella.
@@ -142,8 +143,8 @@ public class ClinicaVeterinaria implements Serializable {
 
     // Consultas administrativas (CU11, RF7) 
 
-    public List<Producto> obtenerProductoStockBajo() {
-        return inventario.obtenerProductosStockBajo();
+    public List<Producto> obtenerProductosBajoStock() {
+        return inventario.obtenerProductosBajoStock(getCatalogoProductos(), LocalDate.now());
     }
 
     // Refuerzos que vencen dentro de los proximos 7 dias, ordenados por fecha (Comparator).
@@ -175,6 +176,12 @@ public class ClinicaVeterinaria implements Serializable {
     public PlanificadorTurnos getPlanificador() { return planificador; }
     public ServicioNotificaciones getNotificaciones() { return notificaciones; }
     public String getNombre() { return nombre; }
+    public List<Producto> getCatalogoProductos() {
+        return inventario.getCatalogoProductos();
+    }
+    public void agregarProducto(Producto p) {
+        // Guarda el producto en el catálogo
+    }
 
     public ControladorAtencion getAtencion() {
         if (atencion == null) {
