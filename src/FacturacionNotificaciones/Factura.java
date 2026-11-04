@@ -96,7 +96,7 @@ public class Factura implements Comparable<Factura> {
         sb.append("Dueño: ").append(dueño.obtenerNombreCompleto()).append(System.lineSeparator());
         for (LineaFactura l : lineas) {
             sb.append(String.format("  %-25s x%d  $%.2f  = $%.2f%n",
-                    l.getDescripcion(), l.getCantidad(), l.getPrecioUnitario(), l.calcularSubtotal()));
+                    l.getDescripcion(), l.getCantidad(), l.getPrecioBase(), l.calcularSubtotal()));
         }
         sb.append(String.format("Subtotal: $%.2f%n", subtotal));
         sb.append(String.format("Medio de pago: %s | Descuento: %.0f%% | Recargo: %.0f%%%n",

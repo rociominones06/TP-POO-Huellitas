@@ -6,7 +6,7 @@ public class LineaFactura {
     private final String descripcion;
     private final Producto producto; // null cuando la línea es el valor de la consulta
     private final int cantidad;
-    private final double precioUnitario;
+    private final double precioBase;
 
     // Línea de un insumo/medicamento: toma nombre y precio base del producto.
     public LineaFactura(Producto producto, int cantidad) {
@@ -18,7 +18,7 @@ public class LineaFactura {
         this.descripcion = producto.getNombre();
         this.producto = producto;
         this.cantidad = cantidad;
-        this.precioUnitario = precioBase;
+        this.precioBase = precioBase;
     }
 
     // Línea de concepto sin producto (por ejemplo, el valor de la consulta).
@@ -30,7 +30,7 @@ public class LineaFactura {
         this.descripcion = descripcion;
         this.producto = null;
         this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
+        this.precioBase = precioUnitario;
     }
 
     private static void validar(int cantidad, double precio) {
@@ -43,11 +43,11 @@ public class LineaFactura {
     }
 
     public double calcularSubtotal() {
-        return EstrategiaPago.redondear(cantidad * precioUnitario);
+        return EstrategiaPago.redondear(cantidad * precioBase);
     }
 
     public String getDescripcion() { return descripcion; }
     public Producto getProducto() { return producto; }
     public int getCantidad() { return cantidad; }
-    public double getPrecioUnitario() { return precioUnitario; }
+    public double getPrecioBase() { return precioBase; }
 }
