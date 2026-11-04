@@ -1,9 +1,10 @@
 package GestionTurnos;
 
 import java.time.LocalTime;
+import java.io.Serializable;
 
-public class RangoHorario {
-
+public class RangoHorario implements Serializable {
+    private static final long serialVersionUID = 1L;
     private LocalTime horaInicio;
     private LocalTime horaFin;
 

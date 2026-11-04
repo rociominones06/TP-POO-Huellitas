@@ -3,13 +3,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.io.Serializable;
 
 // Historia clinica de cada mascota. Almacena las consultas.
 
-public class HistoriaClinica {
-        private int idHistoria;
-        private LocalDate fechaCreacion;
-        private List<Consulta> consultas;
+public class HistoriaClinica implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private int idHistoria;
+    private LocalDate fechaCreacion;
+    private List<Consulta> consultas;
 
     public HistoriaClinica(int idHistoria) {
         this.idHistoria = idHistoria;

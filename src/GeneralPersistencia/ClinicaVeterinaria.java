@@ -169,6 +169,9 @@ public class ClinicaVeterinaria implements Serializable {
             return null;
         }
 
+        // Verifica si el dueño tiene dos o mas ausencias seguidas para cobrarle seña
+        boolean requiereSeña = mascota.getDueño() != null && mascota.getDueño().debePagarSeña();
+
         // Crea y registra el turno.
         Turno nuevoTurno = new Turno(
                 proximoIdTurno,
@@ -177,7 +180,7 @@ public class ClinicaVeterinaria implements Serializable {
                 tipo,
                 fechaHora,
                 false,
-                false
+                requiereSeña
         );
 
         planificador.agregarTurno(nuevoTurno);
@@ -290,8 +293,12 @@ public class ClinicaVeterinaria implements Serializable {
     public List<Producto> getCatalogoProductos() {
         return inventario.getCatalogoProductos();
     }
+
+    // Guarda el producto en el catálogo
     public void agregarProducto(Producto p) {
-        // Guarda el producto en el catálogo
+      if (p != null && !inventario.getCatalogoProductos().contains(p)) {
+          inventario.getCatalogoProductos().add(p);
+      }
     }
 
     public ControladorAtencion getAtencion() {

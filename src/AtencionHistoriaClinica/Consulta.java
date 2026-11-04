@@ -7,10 +7,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 // Acto medico individual atendido por un veterinario durante un Turno.
 
-public class Consulta {
+public class Consulta implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int idConsulta;
     private Veterinario veterinario;
     private LocalDateTime fecha;

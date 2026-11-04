@@ -4,10 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.io.Serializable;
 
 // Representa un producto, insumo o medicamento en stock, y administra sus lotes.
 
-public class Producto {
+public class Producto implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int idProducto;
     private String nombre;
     private String descripcion;
@@ -36,6 +38,9 @@ public class Producto {
         return descripcion;
     }
     public double getPrecioUnitario() {
+        return precioUnitario;
+    }
+    public double getPrecioBase() {
         return precioUnitario;
     }
     public Proveedor getProveedor() {

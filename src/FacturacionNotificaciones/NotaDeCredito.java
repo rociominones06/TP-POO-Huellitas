@@ -1,9 +1,11 @@
 package FacturacionNotificaciones;
 
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
 // Comprobante que anula una factura emitida sin modificar sus datos originales (RN5.8)
-public class NotaDeCredito {
+public class NotaDeCredito implements Serializable {
+    private static final long serialVersionUID = 1L;
     private final int numeroNota;
     private final String motivo;
     private final double importeTotal;

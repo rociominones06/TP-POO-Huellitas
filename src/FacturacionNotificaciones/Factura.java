@@ -8,13 +8,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.io.Serializable;
 
 
 // Comprobante de una consulta. Una vez emitida no puede modificarse (RN5.7);
 // si tiene un error se anula con una NotaDeCredito (RN5.8).
 // El cálculo del importe lo hace CalculadorFacturacion (SRP).
 
-public class Factura implements Comparable<Factura> {
+public class Factura implements Comparable<Factura>, Serializable {
+    private static final long serialVersionUID = 1L;
     private final int numeroFactura;
     private final Dueño dueño;
     private final Consulta consulta;

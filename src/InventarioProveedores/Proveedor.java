@@ -1,8 +1,10 @@
 package InventarioProveedores;
+import java.io.Serializable;
 
 // Representa a un proveedor de medicamentos e insumos.
 
-public class Proveedor {
+public class Proveedor implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String cuit;
     private String razonSocial;
     private String telefono;
