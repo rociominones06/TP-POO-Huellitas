@@ -34,14 +34,14 @@ public class Dueño extends Persona {
         return mascotas;
     }
     
-    public void agregarMacota(Mascota mascota) {
+    public void agregarMascota(Mascota mascota) {
         mascotas.add(mascota);
     }
 
     public void transferirMascota(Mascota mascota, Dueño nuevoDueño) {
         if (mascotas.contains(mascota)) {
             mascotas.remove(mascota);
-            nuevoDueño.agregarMacota(mascota);
+            nuevoDueño.agregarMascota(mascota);
         }
     }
 

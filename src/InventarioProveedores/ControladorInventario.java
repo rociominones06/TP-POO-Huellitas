@@ -10,9 +10,15 @@ import GeneralPersistencia.ClinicaVeterinaria;
 public class ControladorInventario {
     private ClinicaVeterinaria clinica;
     private static int contadorProductos = 1;
+    private List<Producto> productos = new ArrayList<>();
 
     public ControladorInventario(ClinicaVeterinaria clinica){
         this.clinica = clinica;
+    }
+
+    // Devuelve el catalogo
+    public List<Producto> getCatalogoProductos() {
+        return productos;
     }
 
     // Registrar nuevo producto en el catalogo
@@ -24,7 +30,7 @@ public class ControladorInventario {
             throw new ReglaNegocioException("El producto debe tener un proveedor asignado.");
         }
         Producto nuevoProducto = new Producto(contadorProductos++, nombre, descripcion, precio, proveedor, stockMinimo);
-        clinica.agregarProducto(nuevoProducto);
+        this.productos.add(nuevoProducto);
         return nuevoProducto;
     }
 
