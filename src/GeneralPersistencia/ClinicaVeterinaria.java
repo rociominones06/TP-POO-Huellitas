@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDateTime;
 
 import AtencionHistoriaClinica.AplicacionVacuna;
 import AtencionHistoriaClinica.Consulta;
@@ -18,6 +19,9 @@ import FacturacionNotificaciones.CalculadorFacturacion;
 import FacturacionNotificaciones.ControladorFacturacion;
 import FacturacionNotificaciones.ServicioNotificaciones;
 import GestionTurnos.PlanificadorTurnos;
+import GestionTurnos.Turno;
+import GestionTurnos.TipoAtencion;
+import GestionTurnos.ResultadoUrgencia;
 import InventarioProveedores.ControladorInventario;
 import InventarioProveedores.Producto;
 import PersonasMascota.Dueño;
@@ -104,6 +108,7 @@ public class ClinicaVeterinaria implements Serializable {
     public int proximoIdHistoria() {
         return proximoIdHistoria++;
     }
+    private int proximoIdTurno = 1;
 
     // Veterinarios
 
@@ -139,6 +144,112 @@ public class ClinicaVeterinaria implements Serializable {
         }
         throw new RegistroNoEncontradoException("No hay un veterinario de guardia.");
     }
+
+
+    // Gestión de turnos
+
+    // Asigna un turno verificando la disponibilidad del veterinario.
+    public Turno asignarTurno(
+            Mascota mascota,
+            Veterinario veterinario,
+            LocalDateTime fechaHora,
+            TipoAtencion tipo) {
+
+        if (mascota == null || veterinario == null
+                || fechaHora == null || tipo == null) {
+            throw new IllegalArgumentException("Los datos del turno son obligatorios.");
+        }
+
+        // Verifica la disponibilidad del veterinario.
+        int duracion = tipo.getDuracionMinutos();
+
+        if (!planificador.verificarDisponibilidad(
+                veterinario, fechaHora, duracion)) {
+            return null;
+        }
+
+        // Crea y registra el turno.
+        Turno nuevoTurno = new Turno(
+                proximoIdTurno,
+                mascota,
+                veterinario,
+                tipo,
+                fechaHora,
+                false,
+                false
+        );
+
+        planificador.agregarTurno(nuevoTurno);
+        proximoIdTurno++;
+
+        return nuevoTurno;
+    }
+
+    // Registra una urgencia buscando un horario para el veterinario de guardia.
+    public Turno registrarUrgencia(Mascota mascota) {
+
+        if (mascota == null) {
+            throw new IllegalArgumentException("La mascota es obligatoria.");
+        }
+
+        try {
+            // Obtiene el veterinario de guardia.
+            Veterinario vetGuardia = obtenerVeterinarioDeGuardia();
+
+            // Calcula el próximo intervalo de 15 minutos.
+            LocalDateTime ahora = LocalDateTime.now();
+
+            int minutosRestantes = 15 - (ahora.getMinute() % 15);
+
+            if (minutosRestantes == 15
+                    && ahora.getSecond() == 0
+                    && ahora.getNano() == 0) {
+                minutosRestantes = 0;
+            }
+
+            LocalDateTime horarioCandidato = ahora
+                    .withSecond(0)
+                    .withNano(0)
+                    .plusMinutes(minutosRestantes);
+
+            // La urgencia se considera una consulta general de 30 minutos.
+            TipoAtencion tipo = TipoAtencion.ConsultaGeneral;
+
+            // Busca un horario durante los próximos siete días.
+            int intentos = 7 * 24 * 4;
+
+            for (int i = 0; i < intentos; i++) {
+
+                Turno turnoUrgente = new Turno(
+                        proximoIdTurno,
+                        mascota,
+                        vetGuardia,
+                        tipo,
+                        horarioCandidato,
+                        true,
+                        false
+                );
+
+                // Intenta resolver la urgencia y desplazar los turnos necesarios.
+                ResultadoUrgencia resultado =
+                        planificador.resolverUrgencia(turnoUrgente, vetGuardia);
+
+                if (resultado.isResuelta()) {
+                    proximoIdTurno++;
+                    return turnoUrgente;
+                }
+
+                // Si no se puede, prueba el siguiente intervalo.
+                horarioCandidato = horarioCandidato.plusMinutes(15);
+            }
+
+        } catch (RegistroNoEncontradoException e) {
+            return null;
+        }
+
+        return null;
+    }
+
 
     // Consultas administrativas (CU11, RF7) 
 
