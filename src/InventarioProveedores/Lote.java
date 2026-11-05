@@ -1,9 +1,11 @@
 package InventarioProveedores;
 import java.time.LocalDate;
+import java.io.Serializable;
 
 //  Representa un lote fisico de insumos.
 
-public class Lote {
+public class Lote implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String numeroLote;
     private LocalDate fechaVencimiento;
     private int cantidadDisponible;

@@ -1,9 +1,11 @@
 package AtencionHistoriaClinica;
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
 // Nota medica firmada por un profesional. Permite corregir errores de la HC.
 
-public class NotaRectificatoria {
+public class NotaRectificatoria implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int idNota;
     private LocalDateTime fecha;
     private String motivo;

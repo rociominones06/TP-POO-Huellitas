@@ -1,9 +1,11 @@
 package AtencionHistoriaClinica;
 import InventarioProveedores.Producto;
+import java.io.Serializable;
 
 // Indicacion medica. Registra medicamento, dosis, frecuencia y duracion.
 
-public class Tratamiento {
+public class Tratamiento implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Producto medicamento;
     private String dosis;
     private String frecuencia;

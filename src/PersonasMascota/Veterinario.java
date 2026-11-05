@@ -1,8 +1,10 @@
 package PersonasMascota;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Map;
 import GestionTurnos.Turno;
+import GestionTurnos.DiaSemana;
 import AtencionHistoriaClinica.Consulta;
 import GestionTurnos.DiaSemana;
 import GestionTurnos.RangoHorario;
@@ -32,8 +34,28 @@ public class Veterinario extends Persona {
     }
 
     public boolean esHorarioDisponible(LocalDateTime fechaHora, int duracionMinutos) {
-        // Implementación pendiente
-        return false;
+        if (fechaHora == null || horariosAtencion == null || duracionMinutos <=0) {
+            return false;
+        }
+        //Convertir dia de la semana a enum DiaSemana
+        DiaSemana dia;
+        switch (fechaHora.getDayOfWeek()) {
+            case MONDAY: dia = DiaSemana.LUNES; break;
+            case TUESDAY: dia = DiaSemana.MARTES; break;
+            case WEDNESDAY: dia = DiaSemana.MIERCOLES; break;
+            case THURSDAY: dia = DiaSemana.JUEVES; break;
+            case FRIDAY: dia = DiaSemana.VIERNES; break;
+            case SATURDAY: dia = DiaSemana.SABADO; break;
+            case SUNDAY: dia = DiaSemana.DOMINGO; break;
+            default: return false;
+        }
+        RangoHorario rango = horariosAtencion.get(dia);
+        if (rango == null) {
+            return false;
+        }
+        LocalTime inicio = fechaHora.toLocalTime();
+        LocalTime fin = inicio.plusMinutes(duracionMinutos);
+        return rango.contieneHorario(inicio, fin);
     }
 
     public Consulta registrarConsulta(Turno turno, String motivo, double pesoDelDia, String diagnostico, String observaciones) {

@@ -1,10 +1,12 @@
 package FacturacionNotificaciones;
 
 import java.util.List;
+import java.io.Serializable;
 
 import Excepciones.FacturacionException;
 
-public class CalculadorFacturacion {
+public class CalculadorFacturacion implements Serializable{
+    private static final long serialVersionUID = 1L;
     public double calcularSubtotal(List<LineaFactura> lineas) throws FacturacionException {
         if (lineas == null || lineas.isEmpty()) {
             throw new FacturacionException("No hay conceptos para facturar.");

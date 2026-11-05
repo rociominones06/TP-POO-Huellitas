@@ -1,6 +1,7 @@
 package FacturacionNotificaciones;
+import java.io.Serializable;
 
-public interface EstrategiaPago {
+public interface EstrategiaPago extends Serializable {
     // Importe final = subtotal con descuento/recargo del medio de pago (RN5.2 a RN5.6)
     double calcularTotal(double subtotal, boolean tienePlanSalud);
 

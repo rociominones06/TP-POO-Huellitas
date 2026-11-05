@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
 import PersonasMascota.Veterinario;
 
 //Clase encargada de administrar los turnos,
 // verificar la disponibilidad de los veterinarios y resolver urgencias.
-public class PlanificadorTurnos {
-
+public class PlanificadorTurnos implements Serializable {
+    private static final long serialVersionUID = 1L;
     private List<Turno> turnos;
 
     public PlanificadorTurnos() {

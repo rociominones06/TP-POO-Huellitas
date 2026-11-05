@@ -2,12 +2,14 @@ package InventarioProveedores;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 import Excepciones.ReglaNegocioException;
 import GeneralPersistencia.ClinicaVeterinaria;
 
 // Controlador para la gestion de productos, lotes y proveedores.
 
-public class ControladorInventario {
+public class ControladorInventario implements Serializable {
+    private static final long serialVersionUID = 1L;
     private ClinicaVeterinaria clinica;
     private static int contadorProductos = 1;
     private List<Producto> productos = new ArrayList<>();

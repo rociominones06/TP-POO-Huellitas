@@ -1,10 +1,12 @@
 package AtencionHistoriaClinica;
 import InventarioProveedores.Lote;
 import java.time.LocalDate;
+import java.io.Serializable;
 
 // Registro de la aplicacion de una vacuna a un paciente.
 
-public class AplicacionVacuna {
+public class AplicacionVacuna implements Serializable {
+    private static final long serialVersionUID = 1L;
     private LocalDate fechaAplicacion;
     private Vacuna vacuna;
     private Lote lote;

@@ -1,11 +1,12 @@
 package GestionTurnos;
 
 import java.time.LocalDateTime;
+import java.io.Serializable;
 import PersonasMascota.Mascota;
 import PersonasMascota.Veterinario;
 
-public class Turno {
-
+public class Turno implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int idTurno;
     private Mascota mascota;
     private Veterinario veterinario;

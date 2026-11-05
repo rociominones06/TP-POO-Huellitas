@@ -1,8 +1,10 @@
 package FacturacionNotificaciones;
 
 import InventarioProveedores.Producto;
+import java.io.Serializable;
 
-public class LineaFactura {
+public class LineaFactura implements Serializable {
+    private static final long serialVersionUID = 1L;
     private final String descripcion;
     private final Producto producto; // null cuando la línea es el valor de la consulta
     private final int cantidad;

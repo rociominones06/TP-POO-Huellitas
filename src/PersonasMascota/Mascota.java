@@ -2,10 +2,11 @@ package PersonasMascota;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.io.Serializable;
 import AtencionHistoriaClinica.HistoriaClinica;
 
-public abstract class Mascota {
-
+public abstract class Mascota implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int idMascota;
     private Dueño dueño;
     private HistoriaClinica historiaClinica;
