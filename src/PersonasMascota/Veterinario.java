@@ -6,29 +6,26 @@ import java.util.Map;
 import GestionTurnos.Turno;
 import GestionTurnos.DiaSemana;
 import AtencionHistoriaClinica.Consulta;
-import GestionTurnos.DiaSemana;
 import GestionTurnos.RangoHorario;
 
 public class Veterinario extends Persona {
 
-    private String Legajo;
-    private String Matricula;
-    private String Especialidad;
+    private String legajo;
+    private String matricula;
+    private String especialidad;
     private Map<DiaSemana, RangoHorario> horariosAtencion;
     private boolean esDeGuardia;
 
-    public Veterinario(String Nombre, String Apellido,
-                       String Documento, String Telefono,
-                       String Legajo, String Matricula,
-                       String Especialidad,
+    public Veterinario(String nombre, String apellido,
+                       String documento, String telefono,
+                       String legajo, String matricula,
+                       String especialidad,
                        Map<DiaSemana, RangoHorario> horariosAtencion,
                        boolean esDeGuardia) {
-
-        super(Nombre, Apellido, Documento, Telefono);
-
-        this.Legajo = Legajo;
-        this.Matricula = Matricula;
-        this.Especialidad = Especialidad;
+        super(nombre, apellido, documento, telefono);
+        this.legajo = legajo;
+        this.matricula = matricula;
+        this.especialidad = especialidad;
         this.horariosAtencion = horariosAtencion;
         this.esDeGuardia = esDeGuardia;
     }
@@ -58,16 +55,23 @@ public class Veterinario extends Persona {
         return rango.contieneHorario(inicio, fin);
     }
 
-    public Consulta registrarConsulta(Turno turno, String motivo, double pesoDelDia, String diagnostico, String observaciones) {
-        // Implementación pendiente
-        return null;
-    }
-
     public boolean esDeGuardia() {
         return esDeGuardia;
     }
 
     public String getLegajo() {
-        return Legajo;
+        return legajo;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public Map<DiaSemana, RangoHorario> getHorariosAtencion() {
+        return horariosAtencion;
     }
 }

@@ -44,12 +44,8 @@ public class Turno implements Serializable {
         return tipoAtencion.getDuracionMinutos();
     }
 
-    public double cancelar(LocalDateTime fechaCancelacion) {
-        estado = EstadoTurno.CANCELADO;
-
-        // El importe de la consulta debe obtenerse
-        // del mecanismo de facturación.
-        return 0;
+    public void cancelar() {
+        this.estado = EstadoTurno.CANCELADO;
     }
 
     public void reprogramar(LocalDateTime nuevaFecha) {

@@ -10,11 +10,11 @@ public class Dueño extends Persona {
     private boolean esPlanSalud;
     private int cantidadAusenciasSeguidas;
 
-    public Dueño(String Nombre, String Apellido,
-                 String Documento, String Telefono,
+    public Dueño(String nombre, String apellido,
+                 String documento, String telefono,
                  String correo, boolean esPlanSalud) {
 
-        super(Nombre, Apellido, Documento, Telefono);
+        super(nombre, apellido, documento, telefono);
 
         this.correo = correo;
         this.esPlanSalud = esPlanSalud;

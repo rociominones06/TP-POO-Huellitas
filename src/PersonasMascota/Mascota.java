@@ -10,22 +10,22 @@ public abstract class Mascota implements Serializable {
     private int idMascota;
     private Dueño dueño;
     private HistoriaClinica historiaClinica;
-    private String Nombre;
-    private String Especie;
-    private String Raza;
-    private String Sexo;
+    private String nombre;
+    private String especie;
+    private String raza;
+    private String sexo;
     private LocalDate fechaNacimiento;
     private double pesoActual;
 
-    public Mascota(int idMascota, Dueño dueño, HistoriaClinica historiaClinica, String Nombre, String Especie, String Raza, String Sexo, LocalDate fechaNacimiento, double pesoActual) {
+    public Mascota(int idMascota, Dueño dueño, HistoriaClinica historiaClinica, String nombre, String especie, String raza, String sexo, LocalDate fechaNacimiento, double pesoActual) {
 
         this.idMascota = idMascota;
         this.dueño = dueño;
         this.historiaClinica = historiaClinica;
-        this.Nombre = Nombre;
-        this.Especie = Especie;
-        this.Raza = Raza;
-        this.Sexo = Sexo;
+        this.nombre = nombre;
+        this.especie = especie;
+        this.raza = raza;
+        this.sexo = sexo;
         this.fechaNacimiento = fechaNacimiento;
         this.pesoActual = pesoActual;
     }
@@ -54,19 +54,19 @@ public abstract class Mascota implements Serializable {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public String getEspecie() {
-        return Especie;
+        return especie;
     }
 
     public String getRaza() {
-        return Raza;
+        return raza;
     }
 
     public String getSexo() {
-        return Sexo;
+        return sexo;
     }
 
     public LocalDate getFechaNacimiento() {
