@@ -140,11 +140,16 @@ public class PlanificadorTurnos implements Serializable {
                 turnoUrgente, desplazados, true);
     }
 
-    public double calcularCargoCancelacion(
-            Turno turno,
-            LocalDateTime fechaCancelacion) {
-
-        return turno.cancelar(fechaCancelacion);
+    public double calcularCargoCancelacion(Turno turno, LocalDateTime fechaCancelacion, double valorConsulta) {
+        if (turno == null || fechaCancelacion == null) {
+            return 0.0;
+        }
+        turno.cancelar();
+        //Si se cancela con menos de 2 horas de anticipacion
+        if (fechaCancelacion.plusHours(2).isAfter(turno.getFechaHora())) {
+            return valorConsulta * 0.20;
+        }
+        return 0.0;
     }
 
     public void agregarTurno(Turno turno) {
