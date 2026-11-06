@@ -50,7 +50,7 @@ public class Main {
 
         // Configuramos el servicio de notificaciones
         ServicioNotificaciones notificador =
-                new NotificadorEmail("contacto@clinicapatitas.com");
+                new NotificadorEmail("contacto@clinicahuellitas.com");
 
         ClinicaVeterinaria clinica = null;
 
@@ -79,10 +79,10 @@ public class Main {
             // Iniciamos la interfaz gráfica
             SwingUtilities.invokeLater(() -> {
 
-                VentanaPrincipal ventana =
-                        new VentanaPrincipal(clinicaFinal, gestor);
+                VentanaLogin login =
+                        new VentanaLogin(clinicaFinal, gestor);
 
-                ventana.setVisible(true);
+                login.setVisible(true);
 
             });
 
