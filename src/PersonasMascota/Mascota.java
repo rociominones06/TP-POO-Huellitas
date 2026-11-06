@@ -80,4 +80,9 @@ public abstract class Mascota implements Serializable {
     public void setDueño(Dueño dueño) {
         this.dueño = dueño;
     }
+
+    @Override
+    public String toString() {
+        return nombre + " (" + especie + ")";
+    }
 }

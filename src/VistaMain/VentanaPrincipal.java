@@ -23,13 +23,20 @@ public class VentanaPrincipal extends JFrame {
     // Panel central que permite cambiar de pantalla
     private JPanel panelContenido;
     private CardLayout administradorPantallas;
+    private PanelInicio panelInicio;
+    private String rolUsuario;
 
     public VentanaPrincipal(ClinicaVeterinaria clinica, GestorArchivos gestor) {
+        this(clinica, gestor, "Administrador");
+    }
+
+    public VentanaPrincipal(ClinicaVeterinaria clinica, GestorArchivos gestor, String rolUsuario) {
         this.clinica = clinica;
         this.gestor = gestor;
+        this.rolUsuario = rolUsuario;
 
         // Configuración general de la ventana
-        setTitle("Huellitas | Gestión Veterinaria");
+        setTitle("Huellitas | Gestión Veterinaria (" + rolUsuario + ")");
         setSize(1200, 750);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -59,8 +66,9 @@ public class VentanaPrincipal extends JFrame {
         panelContenido.setBackground(FONDO);
 
         // Pantalla inicial
+        panelInicio = new PanelInicio(clinica);
         panelContenido.add(
-                new PanelInicio(clinica),
+                panelInicio,
                 "inicio"
         );
 
@@ -117,12 +125,20 @@ public class VentanaPrincipal extends JFrame {
         subtitulo.setFont(new Font("SansSerif", Font.PLAIN, 13));
         subtitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+        // Muestra qué rol inició sesión
+        JLabel rolLabel = new JLabel("Sesión: " + rolUsuario);
+        rolLabel.setForeground(new Color(255, 225, 120));
+        rolLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        rolLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
         menu.add(titulo);
         menu.add(Box.createVerticalStrut(5));
         menu.add(subtitulo);
-        menu.add(Box.createVerticalStrut(40));
+        menu.add(Box.createVerticalStrut(8));
+        menu.add(rolLabel);
+        menu.add(Box.createVerticalStrut(25));
 
-        // Botones de navegación
+        // Todos los botones disponibles para todos los usuarios:
         agregarBoton(menu, "Inicio", "inicio");
         agregarBoton(menu, "Dueños y mascotas", "mascotas");
         agregarBoton(menu, "Gestión de turnos", "turnos");
@@ -131,6 +147,23 @@ public class VentanaPrincipal extends JFrame {
         agregarBoton(menu, "Facturación", "facturacion");
 
         menu.add(Box.createVerticalGlue());
+
+        // Botón para cerrar sesión y volver a la pantalla de login
+        JButton botonCerrarSesion = new JButton("Cerrar Sesión");
+        botonCerrarSesion.setMaximumSize(new Dimension(Integer.MAX_VALUE, 35));
+        botonCerrarSesion.setAlignmentX(Component.LEFT_ALIGNMENT);
+        botonCerrarSesion.setFont(new Font("SansSerif", Font.BOLD, 12));
+        botonCerrarSesion.setForeground(new Color(180, 50, 50));
+        botonCerrarSesion.setBackground(BLANCO);
+        botonCerrarSesion.setFocusPainted(false);
+        botonCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        botonCerrarSesion.addActionListener(e -> {
+            dispose();
+            new VentanaLogin(clinica, gestor).setVisible(true);
+        });
+
+        menu.add(botonCerrarSesion);
+        menu.add(Box.createVerticalStrut(10));
 
         JLabel pie = new JLabel("Sistema Huellitas © 2026");
         pie.setForeground(VERDE_CLARO);
@@ -157,9 +190,12 @@ public class VentanaPrincipal extends JFrame {
         boton.setFocusPainted(false);
         boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        boton.addActionListener(e ->
-                administradorPantallas.show(panelContenido, pantalla)
-        );
+        boton.addActionListener(e -> {
+            if ("inicio".equals(pantalla) && panelInicio != null) {
+                panelInicio.actualizarIndicadores(); // Refresca los números de las tarjetas
+            }
+            administradorPantallas.show(panelContenido, pantalla);
+        });
 
         menu.add(boton);
         menu.add(Box.createVerticalStrut(8));

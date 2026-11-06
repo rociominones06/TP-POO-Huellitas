@@ -218,7 +218,11 @@ public class PanelFacturacion extends JPanel {
             List<LineaFactura> lineas = new ArrayList<>();
             lineas.add(new LineaFactura(
                     "Consulta: " + consulta.getMotivo(), 1, precio));
-
+            for (Tratamiento tratamiento : consulta.getTratamientos()) {
+                if (tratamiento.getMedicamento() != null) {
+                    lineas.add(new LineaFactura(tratamiento.getMedicamento(), 1));
+                }
+            }
             Factura factura = clinica.getFacturacion().emitirFactura(
                     mascota.getDueño(), consulta, medioPago, lineas);
 

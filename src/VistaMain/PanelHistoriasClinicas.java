@@ -5,6 +5,7 @@ import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.time.LocalDate;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -420,12 +421,69 @@ public class PanelHistoriasClinicas extends JPanel {
                     campoObservaciones.getText().trim()
             );
 
+            // Opción para agregar tratamiento con medicamento del inventario
+            int agregarTratamiento = JOptionPane.showConfirmDialog(
+                    this,
+                    "¿Deseás indicar un tratamiento/medicamento para esta consulta?",
+                    "Indicar Tratamiento",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (agregarTratamiento == JOptionPane.YES_OPTION) {
+                if (clinica.getCatalogoProductos().isEmpty()) {
+                    mostrarMensaje("No hay medicamentos ni productos en el inventario para recetar.");
+                } else {
+                    JComboBox<InventarioProveedores.Producto> comboMedicamentos = new JComboBox<>();
+                    for (InventarioProveedores.Producto prod : clinica.getCatalogoProductos()) {
+                        comboMedicamentos.addItem(prod);
+                    }
+                    comboMedicamentos.setRenderer(new DefaultListCellRenderer() {
+                        @Override
+                        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                            if (value instanceof InventarioProveedores.Producto) {
+                                InventarioProveedores.Producto p = (InventarioProveedores.Producto) value;
+                                setText(p.getNombre() + " (Stock utilizable: " + p.obtenerStockUtilizable(LocalDate.now()) + ")");
+                            }
+                            return this;
+                        }
+                    });
+                    JTextField campoDosis = new JTextField("1 comprimido");
+                    JTextField campoFrecuencia = new JTextField("Cada 12 horas");
+                    JTextField campoDuracion = new JTextField("7 días");
+                    JPanel panelTratamiento = new JPanel(new GridLayout(0, 2, 8, 8));
+                    panelTratamiento.add(new JLabel("Medicamento:"));
+                    panelTratamiento.add(comboMedicamentos);
+                    panelTratamiento.add(new JLabel("Dosis:"));
+                    panelTratamiento.add(campoDosis);
+                    panelTratamiento.add(new JLabel("Frecuencia:"));
+                    panelTratamiento.add(campoFrecuencia);
+                    panelTratamiento.add(new JLabel("Duración:"));
+                    panelTratamiento.add(campoDuracion);
+                    int optTrat = JOptionPane.showConfirmDialog(
+                            this,
+                            panelTratamiento,
+                            "Detalle del Tratamiento",
+                            JOptionPane.OK_CANCEL_OPTION
+                    );
+                    if (optTrat == JOptionPane.OK_OPTION) {
+                        InventarioProveedores.Producto medSeleccionado = (InventarioProveedores.Producto) comboMedicamentos.getSelectedItem();
+                        clinica.getAtencion().agregarTratamientoAConsulta(
+                                consulta,
+                                medSeleccionado,
+                                campoDosis.getText().trim(),
+                                campoFrecuencia.getText().trim(),
+                                campoDuracion.getText().trim()
+                        );
+                    }
+                }
+            }
+
             // Confirmamos la consulta y la guardamos en la historia clínica.
             int confirmar = JOptionPane.showConfirmDialog(
                     this,
                     "¿Deseás confirmar y guardar esta consulta?\n"
                             + "Al confirmar se aplicarán los descuentos de stock "
-                            + "correspondientes a tratamientos y vacunas.",
+                            + "correspondientes a tratamientos.",
                     "Confirmar consulta",
                     JOptionPane.YES_NO_OPTION
             );

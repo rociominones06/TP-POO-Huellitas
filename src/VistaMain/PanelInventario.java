@@ -374,10 +374,7 @@ public class PanelInventario extends JPanel {
             LocalDate fecha = LocalDate.parse(vencimiento.getText().trim());
             int unidades = Integer.parseInt(cantidad.getText().trim());
 
-            if (numeroLote.getText().trim().isEmpty()
-                    || unidades <= 0
-                    || fecha.isBefore(LocalDate.now())) {
-
+            if (numeroLote.getText().trim().isEmpty() || unidades <= 0) {
                 mostrarMensaje("Verificá los datos del lote.");
                 return;
             }
@@ -396,10 +393,23 @@ public class PanelInventario extends JPanel {
 
             actualizarTabla();
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Lote recepcionado correctamente."
-            );
+            // Se permite registrar para constancia, pero avisa que queda bloqueado
+            if (fecha.isBefore(LocalDate.now())) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Lote recepcionado correctamente.\n"
+                                + "Aviso: Como el lote ya está vencido, quedará registrado pero no sumará al stock utilizable.",
+                        "Huellitas",
+                        JOptionPane.WARNING_MESSAGE
+                );
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Lote recepcionado correctamente.",
+                        "Huellitas",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            }
 
         } catch (DateTimeParseException e) {
             mostrarMensaje("La fecha debe tener formato AAAA-MM-DD.");
