@@ -155,4 +155,7 @@ public class ControladorFacturacion implements Serializable {
             notificacionesProcesadas++;
         }
     }
+    public List<Factura> listarFacturas() {
+        return new ArrayList<>(facturas.values());
+    }
 }
