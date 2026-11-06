@@ -23,6 +23,7 @@ public class VentanaPrincipal extends JFrame {
     // Panel central que permite cambiar de pantalla
     private JPanel panelContenido;
     private CardLayout administradorPantallas;
+    private PanelInicio panelInicio;
 
     public VentanaPrincipal(ClinicaVeterinaria clinica, GestorArchivos gestor) {
         this.clinica = clinica;
@@ -59,8 +60,9 @@ public class VentanaPrincipal extends JFrame {
         panelContenido.setBackground(FONDO);
 
         // Pantalla inicial
+        panelInicio = new PanelInicio(clinica);
         panelContenido.add(
-                new PanelInicio(clinica),
+                panelInicio,
                 "inicio"
         );
 
@@ -157,9 +159,12 @@ public class VentanaPrincipal extends JFrame {
         boton.setFocusPainted(false);
         boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        boton.addActionListener(e ->
-                administradorPantallas.show(panelContenido, pantalla)
-        );
+        boton.addActionListener(e -> {
+            if ("inicio".equals(pantalla) && panelInicio != null) {
+                panelInicio.actualizarIndicadores(); // Refresca los números de las tarjetas
+            }
+            administradorPantallas.show(panelContenido, pantalla);
+        });
 
         menu.add(boton);
         menu.add(Box.createVerticalStrut(8));
