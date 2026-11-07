@@ -69,7 +69,7 @@ public class GestorArchivos {
             Path respaldo = archivoDatos.resolveSibling(archivoDatos.getFileName() + ".corrupto");
             Files.move(archivoDatos, respaldo, StandardCopyOption.REPLACE_EXISTING);
             registrarIncidente("No se pudo leer " + archivoDatos + " (" + e + "). Se guardo como " + respaldo);
-            throw new IOException("El archivo de datos estaba danado y se aparto como " + respaldo.getFileName(), e);
+            return new ClinicaVeterinaria(nombreClinica, notificaciones);
         }
     }
 

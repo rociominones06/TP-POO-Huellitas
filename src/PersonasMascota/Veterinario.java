@@ -3,15 +3,13 @@ package PersonasMascota;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Map;
-import GestionTurnos.Turno;
 import GestionTurnos.DiaSemana;
-import AtencionHistoriaClinica.Consulta;
 import GestionTurnos.RangoHorario;
 
 // Veterinario con sus datos, guardias y horarios de atención.
 
 public class Veterinario extends Persona {
-
+    private static final long serialVersionUID = 1L;
     private String legajo;
     private String matricula;
     private String especialidad;

@@ -3,6 +3,7 @@ package FacturacionNotificaciones;
 //Credito: 8 % de recargo.
  
 public class PagoCredito implements EstrategiaPago {
+    private static final long serialVersionUID = 1L;
     private static final double RECARGO_CREDITO = 0.08;
     private static final double DESCUENTO_PLAN = 0.15;
 

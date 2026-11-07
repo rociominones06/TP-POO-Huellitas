@@ -4,6 +4,7 @@ package FacturacionNotificaciones;
 // No se acumulan: se aplica solo el mayor.
 
 public class PagoEfectivo implements EstrategiaPago {
+    private static final long serialVersionUID = 1L;
     private static final double DESCUENTO_EFECTIVO = 0.10;
     private static final double DESCUENTO_PLAN = 0.15;
 

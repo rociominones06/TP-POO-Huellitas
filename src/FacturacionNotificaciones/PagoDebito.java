@@ -3,6 +3,7 @@ package FacturacionNotificaciones;
 // Debito: sin recargo. Aplica el descuento del plan de salud si corresponde.
 
 public class PagoDebito implements EstrategiaPago {
+    private static final long serialVersionUID = 1L;
     private static final double DESCUENTO_PLAN = 0.15;
 
     @Override
