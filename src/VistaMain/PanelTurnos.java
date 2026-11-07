@@ -1,4 +1,3 @@
-
 package VistaMain;
 
 import java.awt.*;
@@ -17,7 +16,8 @@ import PersonasMascota.Mascota;
 import PersonasMascota.Veterinario;
 import PersonasMascota.Dueño;
 
-// Pantalla de administración de turnos de la veterinaria.
+// Pantalla de administración de turnos.
+
 public class PanelTurnos extends JPanel {
 
     private ClinicaVeterinaria clinica;

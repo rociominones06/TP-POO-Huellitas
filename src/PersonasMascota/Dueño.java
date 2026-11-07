@@ -3,6 +3,8 @@ package PersonasMascota;
 import java.util.ArrayList;
 import java.util.List;
 
+// Representa al dueño de una o más mascotas.
+
 public class Dueño extends Persona {
 
     private String correo;

@@ -1,8 +1,6 @@
 package FacturacionNotificaciones;
 
- //Credito en cuotas: 8 % de recargo (RN5.4).
- //Según el supuesto del diseño, primero se aplica el descuento del plan de salud
- // (si corresponde) y luego el recargo sobre el importe resultante.
+//Credito: 8 % de recargo.
  
 public class PagoCredito implements EstrategiaPago {
     private static final double RECARGO_CREDITO = 0.08;

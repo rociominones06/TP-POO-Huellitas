@@ -15,10 +15,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.io.Serializable;
 
-// Controlador MVC de cobros y facturación (GRASP Controlador).
-// Recibe las acciones de la vista (CU14, CU24, CU25), coordina el modelo
-// y dispara las notificaciones. No imprime ni lee por consola: devuelve datos
-// o lanza FacturacionException para que la vista los muestre.
+// Controlador del módulo contable: coordina la emisión de facturas, anulaciones y avisos de cobro.
 
 public class ControladorFacturacion implements Serializable {
     private static final long serialVersionUID = 1L;

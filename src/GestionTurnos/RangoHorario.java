@@ -3,6 +3,8 @@ package GestionTurnos;
 import java.time.LocalTime;
 import java.io.Serializable;
 
+// Modela un intervalo de tiempo con hora de inicio y fin para la jornada de un veterinario.
+
 public class RangoHorario implements Serializable {
     private static final long serialVersionUID = 1L;
     private LocalTime horaInicio;

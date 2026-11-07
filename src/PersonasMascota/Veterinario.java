@@ -8,6 +8,8 @@ import GestionTurnos.DiaSemana;
 import AtencionHistoriaClinica.Consulta;
 import GestionTurnos.RangoHorario;
 
+// Veterinario con sus datos, guardias y horarios de atención.
+
 public class Veterinario extends Persona {
 
     private String legajo;

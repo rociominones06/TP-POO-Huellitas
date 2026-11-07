@@ -1,6 +1,6 @@
 package Excepciones;
 
- // Excepcion propia para reglas de negocio de stock (RN4.3, RN4.6):
+ // Excepcion propia para reglas de negocio de stock:
  // se lanza cuando se intenta consumir mas unidades de las utilizables.
  
 public class StockInsuficienteException extends ReglaNegocioException {

@@ -7,8 +7,8 @@ import GeneralPersistencia.ClinicaVeterinaria;
 import GeneralPersistencia.GestorArchivos;
 import java.io.IOException;
 
-//Esta será la ventana principal de la veterinaria.
-// Va a contener el menú lateral y un espacio central donde iremos mostrando cada módulo.
+// Ventana principal con menú lateral y CardLayout para alternar entre todos los módulos del sistema.
+
 public class VentanaPrincipal extends JFrame {
     // Colores generales de la aplicación
     private final Color VERDE_OSCURO = new Color(54, 83, 70);

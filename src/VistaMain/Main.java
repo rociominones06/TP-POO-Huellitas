@@ -1,4 +1,3 @@
-
 package VistaMain;
 
 import java.io.IOException;
@@ -28,6 +27,8 @@ import PersonasMascota.Dueño;
 import PersonasMascota.Gato;
 import PersonasMascota.Perro;
 import PersonasMascota.Veterinario;
+
+// Punto de entrada de la aplicación: inicializa la persistencia, carga datos y abre el login.
 
 public class Main {
 

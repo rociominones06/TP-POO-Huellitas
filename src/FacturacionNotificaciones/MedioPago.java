@@ -1,5 +1,7 @@
 package FacturacionNotificaciones;
 
+// Enumerador de las modalidades de pago aceptadas.
+
 public enum MedioPago {
     EFECTIVO("Efectivo"),
     DEBITO("Tarjeta de debito"),

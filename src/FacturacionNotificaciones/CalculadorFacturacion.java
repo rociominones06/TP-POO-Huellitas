@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 import Excepciones.FacturacionException;
 
+// Servicio de cálculo contable que liquida subtotales, descuentos y recargos según la estrategia de pago.
+
 public class CalculadorFacturacion implements Serializable{
     private static final long serialVersionUID = 1L;
     public double calcularSubtotal(List<LineaFactura> lineas) throws FacturacionException {

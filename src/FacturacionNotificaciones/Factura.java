@@ -11,9 +11,7 @@ import java.util.List;
 import java.io.Serializable;
 
 
-// Comprobante de una consulta. Una vez emitida no puede modificarse (RN5.7);
-// si tiene un error se anula con una NotaDeCredito (RN5.8).
-// El cálculo del importe lo hace CalculadorFacturacion (SRP).
+// Comprobante de una consulta. No puede modificarse, se anula con nota de credito.
 
 public class Factura implements Comparable<Factura>, Serializable {
     private static final long serialVersionUID = 1L;

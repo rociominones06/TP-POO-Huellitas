@@ -3,7 +3,7 @@ import InventarioProveedores.Lote;
 import java.time.LocalDate;
 import java.io.Serializable;
 
-// Registro de la aplicacion de una vacuna a un paciente.
+// Registro de una dosis aplicada a una mascota con su lote y fecha calculada de próximo refuerzo.
 
 public class AplicacionVacuna implements Serializable {
     private static final long serialVersionUID = 1L;

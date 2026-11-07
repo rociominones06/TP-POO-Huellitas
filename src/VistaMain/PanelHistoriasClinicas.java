@@ -1,4 +1,3 @@
-
 package VistaMain;
 
 import java.awt.*;
@@ -18,6 +17,7 @@ import PersonasMascota.Mascota;
 import PersonasMascota.Veterinario;
 
 // Pantalla para administrar las historias clínicas de las mascotas.
+
 public class PanelHistoriasClinicas extends JPanel {
 
     private ClinicaVeterinaria clinica;

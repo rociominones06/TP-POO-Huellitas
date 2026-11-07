@@ -2,7 +2,7 @@ package InventarioProveedores;
 import java.time.LocalDate;
 import java.io.Serializable;
 
-//  Representa un lote fisico de insumos.
+//  Representa un lote fisico de insumos. Controla vencimiento y disponibilidad.
 
 public class Lote implements Serializable {
     private static final long serialVersionUID = 1L;

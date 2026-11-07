@@ -8,7 +8,7 @@ import InventarioProveedores.Lote;
 import java.time.LocalDate;
 import java.util.List;
 
-// Controlador del modulo de Atencion Medica e Historia Clinica (consultas, tratamientos, vacunas hc).
+// Controlador del módulo de atención médica: coordina consultas, tratamientos, vacunas y notas.
 
 public class ControladorAtencion {
     private ClinicaVeterinaria clinica;

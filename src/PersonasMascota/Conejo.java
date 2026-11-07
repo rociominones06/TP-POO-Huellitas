@@ -3,6 +3,8 @@ package PersonasMascota;
 import java.time.LocalDate;
 import AtencionHistoriaClinica.HistoriaClinica;
 
+// Subclase específica para conejo.
+
 public class Conejo extends Mascota {
 
     private boolean requiereDietaEspecial;

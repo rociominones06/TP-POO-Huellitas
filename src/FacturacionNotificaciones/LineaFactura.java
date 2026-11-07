@@ -3,6 +3,8 @@ package FacturacionNotificaciones;
 import InventarioProveedores.Producto;
 import java.io.Serializable;
 
+// Detalle individual de un ítem cobrado en la factura.
+
 public class LineaFactura implements Serializable {
     private static final long serialVersionUID = 1L;
     private final String descripcion;
