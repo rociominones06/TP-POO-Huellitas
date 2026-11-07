@@ -15,6 +15,7 @@ import GestionTurnos.TipoAtencion;
 import GestionTurnos.Turno;
 import PersonasMascota.Mascota;
 import PersonasMascota.Veterinario;
+import PersonasMascota.Dueño;
 
 // Pantalla de administración de turnos de la veterinaria.
 public class PanelTurnos extends JPanel {
@@ -138,6 +139,10 @@ public class PanelTurnos extends JPanel {
                 "Cancelar turno", new Color(130, 145, 130)
         );
 
+        JButton botonAusente = crearBoton(
+                "Marcar ausente", new Color(160, 110, 100)
+        );
+
         JButton botonActualizar = crearBoton(
                 "Actualizar", new Color(130, 145, 130)
         );
@@ -145,19 +150,20 @@ public class PanelTurnos extends JPanel {
         acciones.add(botonNuevo);
         acciones.add(botonUrgencia);
         acciones.add(botonCancelar);
+        acciones.add(botonAusente);
         acciones.add(botonActualizar);
 
         add(acciones, BorderLayout.SOUTH);
 
-        // =========================
         // EVENTOS
-        // =========================
 
         botonNuevo.addActionListener(e -> registrarTurno());
 
         botonUrgencia.addActionListener(e -> registrarUrgencia());
 
         botonCancelar.addActionListener(e -> cancelarTurno());
+
+        botonAusente.addActionListener(e -> marcarAusente());
 
         botonActualizar.addActionListener(e -> actualizarTabla());
     }
@@ -611,4 +617,68 @@ public class PanelTurnos extends JPanel {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
+
+    // Registra la ausencia del dueño y actualiza las penalidades por seña
+    private void marcarAusente() {
+
+        int fila = tablaTurnos.getSelectedRow();
+
+        if (fila == -1) {
+            mostrarMensaje("Seleccioná un turno de la tabla.");
+            return;
+        }
+
+        int idTurno = Integer.parseInt(
+                modeloTabla.getValueAt(fila, 0).toString()
+        );
+
+        for (Turno turno : clinica.getPlanificador().getTurnos()) {
+
+            if (turno.getIdTurno() == idTurno) {
+
+                if (turno.getEstado() != Turno.EstadoTurno.PROGRAMADO) {
+                    mostrarMensaje("Solamente se puede registrar ausencia en turnos programados.");
+                    return;
+                }
+
+                int confirmacion = JOptionPane.showConfirmDialog(
+                        this,
+                        "¿Deseás marcar como ausente el turno seleccionado?\n"
+                                + "Esto incrementará el contador de ausencias consecutivas del dueño.",
+                        "Confirmar ausencia",
+                        JOptionPane.YES_NO_OPTION
+                );
+
+                if (confirmacion == JOptionPane.YES_OPTION) {
+
+                    turno.marcarAusente();
+
+                    Dueño dueño = turno.getMascota().getDueño();
+                    if (dueño != null) {
+                        dueño.registrarAusencia();
+                    }
+
+                    actualizarTabla();
+
+                    String mensaje = "El turno fue marcado como AUSENTE.";
+                    if (dueño != null && dueño.debePagarSeña()) {
+                        mensaje += "\n\nAVISO: El dueño acumuló ausencias consecutivas.\n"
+                                + "A partir de ahora se le exigirá una seña previa para nuevos turnos.";
+                    }
+
+                    JOptionPane.showMessageDialog(
+                            this,
+                            mensaje,
+                            "Control de Ausencias",
+                            JOptionPane.INFORMATION_MESSAGE
+                    );
+                }
+
+                return;
+            }
+        }
+
+        mostrarMensaje("No se encontró el turno seleccionado.");
+    }
+
 }
