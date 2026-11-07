@@ -6,7 +6,7 @@ import java.time.LocalDate;
 // Subclase específica para perros.
 
 public class Perro extends Mascota {
-
+    private static final long serialVersionUID = 1L;
     private String numeroChip;
     private String tamaño;
 

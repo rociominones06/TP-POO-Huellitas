@@ -6,7 +6,7 @@ import AtencionHistoriaClinica.HistoriaClinica;
 // Subclase específica para aves.
 
 public class Ave extends Mascota {
-
+    private static final long serialVersionUID = 1L;
     private boolean puedeVolar;
 
     public Ave(int idMascota, Dueño dueño,HistoriaClinica historiaClinica, String nombre, String especie, String raza, String sexo, LocalDate fechaNacimiento, double pesoActual, boolean puedeVolar) {

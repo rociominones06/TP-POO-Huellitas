@@ -6,7 +6,7 @@ import java.util.List;
 // Representa al dueño de una o más mascotas.
 
 public class Dueño extends Persona {
-
+    private static final long serialVersionUID = 1L;
     private String correo;
     private List<Mascota> mascotas;
     private boolean esPlanSalud;
@@ -26,10 +26,6 @@ public class Dueño extends Persona {
     
     public String getCorreo() {
         return correo;
-    }
-
-    public String getDocumento() {
-        return super.getDocumento();
     }
 
     public List<Mascota> getMascotas() {
@@ -56,7 +52,7 @@ public class Dueño extends Persona {
     }
 
     public boolean debePagarSeña() {
-        return cantidadAusenciasSeguidas >= 2;
+        return cantidadAusenciasSeguidas >= 3;
     }
 
     public boolean tieneDescuentoPlan() {

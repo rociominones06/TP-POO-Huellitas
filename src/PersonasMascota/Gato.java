@@ -6,7 +6,7 @@ import java.time.LocalDate;
 // Subclase específica para gatos.
 
 public class Gato extends Mascota {
-
+    private static final long serialVersionUID = 1L;
     private boolean viveEnInterior;
 
     public Gato(int idMascota, Dueño dueño, HistoriaClinica historiaClinica, String nombre, String especie, String raza, String sexo, LocalDate fechaNacimiento, double pesoActual, boolean viveEnInterior) {
