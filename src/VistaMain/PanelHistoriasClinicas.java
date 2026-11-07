@@ -196,7 +196,10 @@ public class PanelHistoriasClinicas extends JPanel {
 
         botonVerDetalle.addActionListener(e -> verDetalleConsulta());
 
-        botonActualizar.addActionListener(e -> actualizarHistorial());
+        botonActualizar.addActionListener(e -> {
+            cargarMascotas();
+            actualizarHistorial();
+        });
     }
 
     // Crea botones con el diseño de Huellitas.
