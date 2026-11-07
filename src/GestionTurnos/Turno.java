@@ -5,6 +5,8 @@ import java.io.Serializable;
 import PersonasMascota.Mascota;
 import PersonasMascota.Veterinario;
 
+// Representa una cita médica: vincula mascota, veterinario, fecha, horario y estado.
+
 public class Turno implements Serializable {
     private static final long serialVersionUID = 1L;
     private int idTurno;

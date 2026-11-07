@@ -8,8 +8,8 @@ import java.io.Serializable;
 
 import PersonasMascota.Veterinario;
 
-//Clase encargada de administrar los turnos,
-// verificar la disponibilidad de los veterinarios y resolver urgencias.
+// Verifica disponibilidad, gestiona urgencias y calcula penalidades de cancelación.
+
 public class PlanificadorTurnos implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<Turno> turnos;

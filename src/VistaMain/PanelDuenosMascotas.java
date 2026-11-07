@@ -1,4 +1,3 @@
-
 package VistaMain;
 
 import java.awt.*;
@@ -14,6 +13,7 @@ import GeneralPersistencia.ClinicaVeterinaria;
 import PersonasMascota.*;
 
 // Panel para administrar dueños y mascotas.
+
 public class PanelDuenosMascotas extends JPanel {
 
     private ClinicaVeterinaria clinica;

@@ -3,6 +3,8 @@ package PersonasMascota;
 import AtencionHistoriaClinica.HistoriaClinica;
 import java.time.LocalDate;
 
+// Subclase específica para gatos.
+
 public class Gato extends Mascota {
 
     private boolean viveEnInterior;

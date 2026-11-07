@@ -1,4 +1,3 @@
-
 package VistaMain;
 
 import GeneralPersistencia.ClinicaVeterinaria;
@@ -13,6 +12,8 @@ import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+// Pantalla para emitir comprobantes de pago con descuentos/recargos y anular mediante nota de crédito.
 
 public class PanelFacturacion extends JPanel {
 

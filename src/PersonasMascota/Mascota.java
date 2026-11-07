@@ -5,6 +5,8 @@ import java.time.Period;
 import java.io.Serializable;
 import AtencionHistoriaClinica.HistoriaClinica;
 
+// Representa a una mascota con sus datos generales y su historia clínica.
+
 public abstract class Mascota implements Serializable {
     private static final long serialVersionUID = 1L;
     private int idMascota;

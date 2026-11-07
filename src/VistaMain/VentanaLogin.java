@@ -10,7 +10,8 @@ import javax.swing.*;
 import GeneralPersistencia.ClinicaVeterinaria;
 import GeneralPersistencia.GestorArchivos;
 
-// Ventana de inicio de sesión
+// Pantalla de acceso que autentica usuarios en memoria y da paso a la ventana principal.
+
 public class VentanaLogin extends JFrame {
 
     private ClinicaVeterinaria clinica;

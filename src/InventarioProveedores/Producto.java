@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.io.Serializable;
 
-// Representa un producto, insumo o medicamento en stock, y administra sus lotes.
+// Representa un producto, insumo o medicamento del inventario. Administra sus lotes, stock y consumo.
 
 public class Producto implements Serializable {
     private static final long serialVersionUID = 1L;

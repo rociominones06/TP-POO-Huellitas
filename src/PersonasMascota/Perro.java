@@ -3,6 +3,8 @@ package PersonasMascota;
 import AtencionHistoriaClinica.HistoriaClinica;
 import java.time.LocalDate;
 
+// Subclase específica para perros.
+
 public class Perro extends Mascota {
 
     private String numeroChip;

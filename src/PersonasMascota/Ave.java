@@ -3,6 +3,8 @@ package PersonasMascota;
 import java.time.LocalDate;
 import AtencionHistoriaClinica.HistoriaClinica;
 
+// Subclase específica para aves.
+
 public class Ave extends Mascota {
 
     private boolean puedeVolar;

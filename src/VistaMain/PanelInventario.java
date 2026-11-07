@@ -1,4 +1,3 @@
-
 package VistaMain;
 
 import java.awt.*;
@@ -10,6 +9,8 @@ import javax.swing.table.DefaultTableModel;
 import GeneralPersistencia.ClinicaVeterinaria;
 import InventarioProveedores.*;
 import Excepciones.ReglaNegocioException;
+
+// Pantalla para administrar el catálogo de medicamentos, recepción de lotes y control de vencimientos.
 
 public class PanelInventario extends JPanel {
 

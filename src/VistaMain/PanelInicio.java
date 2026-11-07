@@ -1,4 +1,3 @@
-
 package VistaMain;
 
 import java.awt.*;
@@ -6,6 +5,8 @@ import javax.swing.*;
 
 import GeneralPersistencia.ClinicaVeterinaria;
 import PersonasMascota.Dueño;
+
+// Tablero de bienvenida con métricas en tiempo real.
 
 public class PanelInicio extends JPanel {
 

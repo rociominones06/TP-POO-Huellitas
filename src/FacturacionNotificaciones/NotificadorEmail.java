@@ -2,7 +2,7 @@ package FacturacionNotificaciones;
 import Excepciones.ReglaNegocioException;
 import java.io.Serializable;
 
-// Implementacion del servicio de notificaciones por correo electronico
+// Implementacion del servicio de notificaciones por correo electronico.
 
 public class NotificadorEmail implements ServicioNotificaciones, Serializable {
     private static final long serialVersionUID = 1L;

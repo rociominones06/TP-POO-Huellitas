@@ -5,8 +5,8 @@ import GeneralPersistencia.ClinicaVeterinaria;
 import PersonasMascota.Mascota;
 import PersonasMascota.Veterinario;
 
-// Controlador encargado de coordinar las operaciones relacionadas
-// con la gestión de turnos entre la vista y la clínica.
+// Controlador del módulo de turnos: operaciones de asignación, urgencias y cancelaciones.
+
 public class ControladorTurnos {
 
     private ClinicaVeterinaria clinica;

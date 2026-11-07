@@ -2,6 +2,8 @@ package GestionTurnos;
 
 import java.util.List;
 
+// Informa el turno de urgencia asignado y los turnos que fueron desplazados.
+
 public class ResultadoUrgencia {
 
     private Turno turnoUrgente;

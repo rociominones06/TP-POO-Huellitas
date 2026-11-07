@@ -1,6 +1,7 @@
 package FacturacionNotificaciones;
 
-// Debito: sin recargo (RN5.3). Aplica el descuento del plan de salud si corresponde (RN5.5)
+// Debito: sin recargo. Aplica el descuento del plan de salud si corresponde.
+
 public class PagoDebito implements EstrategiaPago {
     private static final double DESCUENTO_PLAN = 0.15;
 

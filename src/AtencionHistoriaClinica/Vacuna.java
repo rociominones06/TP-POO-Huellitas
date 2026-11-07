@@ -2,7 +2,7 @@ package AtencionHistoriaClinica;
 import java.util.List;
 import java.io.Serializable;
 
-// Ficha que define propiedades de cada vacuna
+// Ficha que define propiedades de cada vacuna.
 
 public class Vacuna implements Serializable {
     private static final long serialVersionUID = 1L;

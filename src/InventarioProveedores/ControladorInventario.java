@@ -6,7 +6,7 @@ import java.io.Serializable;
 import Excepciones.ReglaNegocioException;
 import GeneralPersistencia.ClinicaVeterinaria;
 
-// Controlador para la gestion de productos, lotes y proveedores.
+// Controlador del módulo de inventario: gestiona productos, recepción de lotes y alertas de stock bajo.
 
 public class ControladorInventario implements Serializable {
     private static final long serialVersionUID = 1L;
