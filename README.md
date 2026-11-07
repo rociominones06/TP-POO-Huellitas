@@ -8,15 +8,33 @@
 **Fecha de entrega - Etapa 1:** 25/10/2026  
 **Fecha de entrega - Etapa 2:** 04/11/2026
 
-## Propuesta B
-
-**Nombre:** Clínica Veterinaria
-
 ## Integrantes
 
 - Miñones, Rocío — Legajo: 1215772
 - Ortiz, Dolores — Legajo: 1215275
 - Testone, Valentina — Legajo: 1185463
+
+## Propuesta B
+
+**Nombre:** Clínica Veterinaria
+
+## Descripción del sistema
+
+**Huellitas** es una aplicación de escritorio para organizar la gestión cotidiana de una clínica veterinaria. Está desarrollada en Java con una interfaz gráfica Swing y reúne en una misma ventana la información de clientes y mascotas, los turnos, la atención veterinaria, el inventario y la facturación. Desde el menú lateral se puede cambiar de módulo; el inicio muestra indicadores de dueños, mascotas, veterinarios y productos registrados.
+
+El sistema permite mantener los datos relacionados entre sí: las mascotas pertenecen a un dueño, sus consultas se registran en una historia clínica y las facturas se emiten asociadas a consultas confirmadas. Los cambios se conservan entre ejecuciones mediante archivos locales, como se detalla en **Datos y notificaciones**.
+
+## Funcionalidades
+
+- **Inicio:** muestra un resumen de la cantidad de dueños, mascotas, veterinarios y productos cargados.
+- **Dueños y mascotas:** registra dueños con sus datos de contacto y plan de salud; permite buscarlos por nombre, apellido o documento, consultar sus mascotas y registrar animales con su especie y datos particulares.
+- **Gestión de turnos:** registra turnos para mascotas y veterinarios, contempla la atención de urgencias y permite cancelar turnos o marcar inasistencias.
+- **Historias clínicas:** consulta el historial de cada mascota y permite registrar consultas con sus datos de atención. Las consultas pueden incluir tratamientos y aplicaciones de vacunas; el detalle del registro se puede consultar desde la pantalla.
+- **Inventario y proveedores:** registra productos y proveedores, recibe lotes con cantidades y vencimientos, y permite buscar productos y consultar sus existencias. La tabla informa el stock total, el stock utilizable y si el producto requiere reposición.
+- **Facturación:** emite facturas para consultas confirmadas, con selección del medio de pago; permite consultar el detalle y anular una factura mediante una nota de crédito. El cálculo puede contemplar descuentos o recargos según las reglas del sistema.
+- **Inicio de sesión:** ofrece cuentas de prueba para acceder a la interfaz. En esta versión, los tres usuarios disponibles comparten las mismas secciones y permisos.
+
+La aplicación es un prototipo académico: trabaja con datos locales, no usa una base de datos y las notificaciones de correo se simulan en la consola.
 
 ## Requisitos del Programa
 
